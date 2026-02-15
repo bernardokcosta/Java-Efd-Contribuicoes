@@ -10,10 +10,10 @@ import br.com.swconsultoria.efd.contribuicoes.registros.EfdContribuicoes;
 
 public final class Util {
 
-
 	private final static LocalDate dataVersao2018 = LocalDate.of(2017, 12, 31);
 	private final static LocalDate dataVersao2019 = LocalDate.of(2018, 12, 31);
 	private final static LocalDate dataVersao2020 = LocalDate.of(2019, 12, 31);
+	private final static LocalDate dataVersaoLayout006 = LocalDate.of(2019, 12, 31);
 
 	/**
 	 * Construtor privado para garantir o Singleton.
@@ -28,7 +28,7 @@ public final class Util {
 	 * @param obj
 	 * @return <b>true</b> se o objeto for vazio(empty).
 	 */
-    public static boolean isEmpty(Object obj) {
+	public static boolean isEmpty(Object obj) {
 		if (obj == null)
 			return true;
 		if (obj instanceof Collection)
@@ -38,41 +38,42 @@ public final class Util {
 
 		return s.length() == 0 || s.equalsIgnoreCase("null");
 	}
-    
-    /**
+
+	/**
 	 * Preenche o Registro
 	 * 
 	 * @param String
 	 */
-    public static String preencheRegistro(String string) {
-    	return Util.isEmpty(string)? "" : string;
+	public static String preencheRegistro(String string) {
+		return Util.isEmpty(string) ? "" : string;
 	}
-    
-    /**
-     * Cria um arquivo com os dados passados 
-     * @throws Exception 
-     */
-    public static void criarPastaArquivo(String pasta, String arquivo , String conteudo ) throws EfdException {
-    	
-    	File folder = new File(pasta);
-    	if(!folder.exists()){
-    		folder.mkdirs();
-    	}
-    	
-    	FileWriter fileWriter;
-    	try {
-    		fileWriter = new FileWriter(new File(pasta+"/"+arquivo));
-    		fileWriter.write(conteudo);
-    		fileWriter.close();
-    	} catch (Exception e) {
-    		throw new EfdException("Erro ao Criar Arquivo "+e.getMessage());    		
-    	}
-    }
+
+	/**
+	 * Cria um arquivo com os dados passados
+	 * 
+	 * @throws Exception
+	 */
+	public static void criarPastaArquivo(String pasta, String arquivo, String conteudo) throws EfdException {
+
+		File folder = new File(pasta);
+		if (!folder.exists()) {
+			folder.mkdirs();
+		}
+
+		FileWriter fileWriter;
+		try {
+			fileWriter = new FileWriter(new File(pasta + "/" + arquivo));
+			fileWriter.write(conteudo);
+			fileWriter.close();
+		} catch (Exception e) {
+			throw new EfdException("Erro ao Criar Arquivo " + e.getMessage());
+		}
+	}
 
 	private static LocalDate strToDate(String dataStr) {
-		return LocalDate.of(Integer.parseInt(dataStr.substring(4, 8)), Integer.parseInt(dataStr.substring(2, 4)), Integer.parseInt(dataStr.substring(0, 2)));
+		return LocalDate.of(Integer.parseInt(dataStr.substring(4, 8)), Integer.parseInt(dataStr.substring(2, 4)),
+				Integer.parseInt(dataStr.substring(0, 2)));
 	}
-
 
 	public static boolean versao2018(String dataStr) {
 		return strToDate(dataStr).isAfter(dataVersao2018);
@@ -87,7 +88,13 @@ public final class Util {
 	}
 
 	public static String getCodVersao(EfdContribuicoes efdContribuicoes) {
-		if (versao2020(efdContribuicoes.getBloco0().getRegistro0000().getDt_ini())) {
+		if (!isEmpty(efdContribuicoes.getBloco0().getRegistro0000().getCod_ver())) {
+			return efdContribuicoes.getBloco0().getRegistro0000().getCod_ver();
+		}
+
+		LocalDate dataInicio = strToDate(efdContribuicoes.getBloco0().getRegistro0000().getDt_ini());
+
+		if (dataInicio.isAfter(dataVersaoLayout006)) {
 			return "006";
 		} else if (versao2019(efdContribuicoes.getBloco0().getRegistro0000().getDt_ini())) {
 			return "005";
@@ -97,6 +104,5 @@ public final class Util {
 			return "003";
 		}
 	}
-    
-   
+
 }

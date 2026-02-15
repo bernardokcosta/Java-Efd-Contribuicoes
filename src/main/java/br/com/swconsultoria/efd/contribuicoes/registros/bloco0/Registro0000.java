@@ -11,6 +11,7 @@ public class Registro0000 {
 
     private final String reg = "0000";
     private String cod_fin;
+    private String cod_ver;
     private String tipo_escrit;
     private String ind_sit_esp;
     private String num_rec_anterior;
@@ -40,10 +41,18 @@ public class Registro0000 {
 
     /**
      * @param cod_fin
-     *            the cod_fin to set
+     *                the cod_fin to set
      */
     public void setCod_fin(String cod_fin) {
         this.cod_fin = cod_fin;
+    }
+
+    public String getCod_ver() {
+        return cod_ver;
+    }
+
+    public void setCod_ver(String cod_ver) {
+        this.cod_ver = cod_ver;
     }
 
     /**
@@ -55,7 +64,7 @@ public class Registro0000 {
 
     /**
      * @param tipo_escrit
-     *            the tipo_escrit to set
+     *                    the tipo_escrit to set
      */
     public void setTipo_escrit(String tipo_escrit) {
         this.tipo_escrit = tipo_escrit;
@@ -70,7 +79,7 @@ public class Registro0000 {
 
     /**
      * @param ind_sit_esp
-     *            the ind_sit_esp to set
+     *                    the ind_sit_esp to set
      */
     public void setInd_sit_esp(String ind_sit_esp) {
         this.ind_sit_esp = ind_sit_esp;
@@ -85,7 +94,7 @@ public class Registro0000 {
 
     /**
      * @param num_rec_anterior
-     *            the num_rec_anterior to set
+     *                         the num_rec_anterior to set
      */
     public void setNum_rec_anterior(String num_rec_anterior) {
         this.num_rec_anterior = num_rec_anterior;
@@ -100,7 +109,7 @@ public class Registro0000 {
 
     /**
      * @param dt_ini
-     *            the dt_ini to set
+     *               the dt_ini to set
      */
     public void setDt_ini(String dt_ini) {
         this.dt_ini = dt_ini;
@@ -115,7 +124,7 @@ public class Registro0000 {
 
     /**
      * @param dt_fin
-     *            the dt_fin to set
+     *               the dt_fin to set
      */
     public void setDt_fin(String dt_fin) {
         this.dt_fin = dt_fin;
@@ -130,7 +139,7 @@ public class Registro0000 {
 
     /**
      * @param nome
-     *            the nome to set
+     *             the nome to set
      */
     public void setNome(String nome) {
         this.nome = nome;
@@ -145,7 +154,7 @@ public class Registro0000 {
 
     /**
      * @param cnpj
-     *            the cnpj to set
+     *             the cnpj to set
      */
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
@@ -160,7 +169,7 @@ public class Registro0000 {
 
     /**
      * @param uf
-     *            the uf to set
+     *           the uf to set
      */
     public void setUf(String uf) {
         this.uf = uf;
@@ -175,7 +184,7 @@ public class Registro0000 {
 
     /**
      * @param cod_mun
-     *            the cod_mun to set
+     *                the cod_mun to set
      */
     public void setCod_mun(String cod_mun) {
         this.cod_mun = cod_mun;
@@ -190,7 +199,7 @@ public class Registro0000 {
 
     /**
      * @param suframa
-     *            the suframa to set
+     *                the suframa to set
      */
     public void setSuframa(String suframa) {
         this.suframa = suframa;
@@ -205,7 +214,7 @@ public class Registro0000 {
 
     /**
      * @param ind_nat_pj
-     *            the ind_nat_pj to set
+     *                   the ind_nat_pj to set
      */
     public void setInd_nat_pj(String ind_nat_pj) {
         this.ind_nat_pj = ind_nat_pj;
@@ -220,7 +229,7 @@ public class Registro0000 {
 
     /**
      * @param ind_ativ
-     *            the ind_ativ to set
+     *                 the ind_ativ to set
      */
     public void setInd_ativ(String ind_ativ) {
         this.ind_ativ = ind_ativ;
